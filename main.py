@@ -25,14 +25,24 @@ class SecurityToolkit:
             print("4. Block suspicious IP")
             print("5. Monitor web traffic")
             print("6. Generate security reports")
-            print("7. Execute custom Nmap command")
-            print("8. Exit")
+            print("7. Exit")
             choice = input("Select an option: ")
 
             if choice == '1':
-                target = input("Enter IP or hostname to scan: ")
-                self.port_scanner.autoScan(target) 
-                self.reporter.add_result("Port Scanner", self.port_scanner.scan_results) 
+                print("\n--- Port Scanning Options ---")
+                print("1. Auto Scan")
+                print("2. Execute Custom Nmap Command")
+                scan_choice = input("Select a port scanning option: ")
+                if scan_choice == '1':
+                    target = input("Enter IP or hostname to scan: ")
+                    self.port_scanner.autoScan(target) 
+                    self.reporter.add_result("Port Scanner", self.port_scanner.scan_results) 
+                elif scan_choice == '2':
+                    command = input("Enter the Nmap command to execute: ")
+                    self.port_scanner.scan_with_nmap(command) 
+                    self.reporter.add_result("Custom Nmap Command", f"Command executed: {command}") 
+                else:
+                    print("Invalid option. Please try again.")
             elif choice == '2':
                 self.traffic_analyzer.analyze_traffic() 
                 self.reporter.add_result("Traffic Analyzer", self.traffic_analyzer.traffic_results) 
@@ -50,15 +60,10 @@ class SecurityToolkit:
             elif choice == '6':
                 self.reporter.generate_report() 
             elif choice == '7':
-                command = input("Enter the Nmap command to execute: ")
-                self.port_scanner.scan_with_nmap(command) 
-                self.reporter.add_result("Custom Nmap Command", f"Command executed: {command}") 
-            elif choice == '8':
                 break  
             else:
-               
                 print("Invalid option. Please try again.") 
 
 if __name__ == "__main__":
     toolkit = SecurityToolkit() 
-    toolkit.menu() 
+    toolkit.menu()
