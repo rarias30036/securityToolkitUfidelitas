@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Toolkit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Security Toolkit</h1>
+
+        <!-- Port Scanner -->
+        <form action="{{ url_for('port_scan') }}" method="post">
+            <div class="form-group">
+                <label for="target">Port Scan Target:</label>
+                <input type="text" id="target" name="target" required>
+                <button type="submit">Scan Ports</button>
+            </div>
+        </form>
+
+        <!-- Custom Nmap Command -->
+        <form action="{{ url_for('custom_nmap_scan') }}" method="post">
+            <div class="form-group">
+                <label for="command">Custom Nmap Command:</label>
+                <input type="text" id="command" name="command" required>
+                <button type="submit">Execute Nmap Command</button>
+            </div>
+        </form>
+
+        <!-- Traffic Analyzer -->
+        <form action="{{ url_for('traffic_analyzer') }}" method="post">
+            <div class="form-group">
+                <button type="submit">Start Traffic Analysis</button>
+            </div>
+        </form>
+
+        <!-- Stop Traffic Analysis -->
+        <form action="{{ url_for('stop_traffic_analysis') }}" method="post">
+            <div class="form-group">
+                <button type="submit">Stop Traffic Analysis</button>
+            </div>
+        </form>
+
+        <!-- Penetration Test -->
+        <form action="{{ url_for('penetration_test') }}" method="post">
+            <div class="form-group">
+                <label for="url">Penetration Test URL:</label>
+                <input type="text" id="url" name="url" required>
+                <button type="submit">Test Website</button>
+            </div>
+        </form>
+
+        <!-- Stop Penetration Test -->
+        <form action="{{ url_for('stop_penetration_test') }}" method="post">
+            <div class="form-group">
+                <button type="submit">Stop Penetration Test</button>
+            </div>
+        </form>
+
+        <!-- System Protection -->
+        <form action="{{ url_for('system_protection') }}" method="post">
+            <div class="form-group">
+                <label for="ip">IP Address:</label>
+                <input type="text" id="ip" name="ip" required>
+                <label for="action">Action:</label>
+                <select id="action" name="action">
+                    <option value="block">Block IP</option>
+                    <option value="unblock">Unblock IP</option>
+                </select>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+
+        <!-- List Blocked IPs -->
+        <form action="{{ url_for('list_blocked_ips') }}" method="post">
+            <div class="form-group">
+                <button type="submit">List Blocked IPs</button>
+            </div>
+        </form>
+
+        <!-- Web Traffic Monitor -->
+        <form action="{{ url_for('web_traffic_monitor') }}" method="post">
+            <div class="form-group">
+                <button type="submit">Monitor Web Traffic</button>
+            </div>
+        </form>
+
+        <!-- Stop Monitoring Web Traffic -->
+        <form action="{{ url_for('stop_web_traffic_monitor') }}" method="post">
+            <div class="form-group">
+                <button type="submit">Stop Monitoring Web Traffic</button>
+            </div>
+        </form>
+
+        <!-- Web Scraping -->
+        <form action="{{ url_for('web_scraping') }}" method="post">
+            <div class="form-group">
+                <label for="scrape_url">Web Scraping URL:</label>
+                <input type="text" id="scrape_url" name="scrape_url" required>
+                <button type="submit">Perform Web Scraping</button>
+            </div>
+        </form>
+
+        <!-- Generate Report -->
+        <form action="{{ url_for('generate_report') }}" method="post">
+            <div class="form-group">
+                <button type="submit">Generate Report</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
